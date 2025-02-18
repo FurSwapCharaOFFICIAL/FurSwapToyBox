@@ -6,6 +6,7 @@
 --- BADGE_COLOUR: FF7F27
 --- PREFIX: furswap
 --- VERSION: 1.0.0
+--- DEPENDENCIES: [Steamodded>=1.0.0, Jen's Almanac>=0.1, Cryptid>=0.5]
 ----------------
 --CODING BEGIN--
 ----------------
