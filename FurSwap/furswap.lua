@@ -2,6 +2,11 @@
 --CODING BEGIN--
 ----------------
 --- Startup stuff
+
+if not fur then
+    fur = {}
+end
+
 SMODS.Atlas {
 	key = "modicon",
 	path = "furswap_avatar.png",
@@ -35,7 +40,9 @@ SMODS.Rarity {
 	badge_colour = G.C.BLACK
 }
 
-
+function fur.night()
+	return #SMODS.find_card('j_furswap_nightmare') > 0
+end
 
 ---JOKER ATLASES
 
@@ -168,7 +175,7 @@ SMODS.Joker {
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 1, y = 0 },
 	sinis = { x = 2, y = 0 },
-	cost = 10,
+	cost = 50,
 	rarity = 'cry_exotic',
 	fusable = true,
 	unlocked = true,
@@ -178,7 +185,7 @@ SMODS.Joker {
 	perishable_compat = false,
 	atlas = 'furswapchara',
     loc_vars = function(self, info_queue, center)
-        return {vars = {center.ability.lucky, Jen.sinister and 'PLEASE STOP IT! ' or Jen.gods() and 'Hnfff... I feel like it\'s time' or 'Hope you\'re lucky, cuz I\'m sure not', Jen.sinister and 'MY BRAIN HURTS!' or '', Jen.sinister and '' or ''}}
+        return {vars = {center.ability.lucky, Jen.sinister and 'PLEASE STOP IT! ' or fur.night and 'Hnfff... I feel like it\'s time' or 'Hope you\'re lucky, cuz I\'m sure not', Jen.sinister and 'MY BRAIN HURTS!' or '', Jen.sinister and '' or ''}}
     end,
     calculate = function(self, card, context)
 		if context.individual then
@@ -281,9 +288,11 @@ SMODS.Joker {
 			end
 		end
 	}
-	function furswap.nightmare()
-		return #SMODS.find_card('j_furswap_nightmare') > 0
-	end
+
+
+
+
+
 --- THIS ONE IS CODED, just has no sprite yet.
 ---SMODS.Joker {
 ---	key = 'furswapdemo',
