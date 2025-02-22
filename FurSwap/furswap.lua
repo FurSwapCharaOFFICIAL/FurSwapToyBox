@@ -9,6 +9,22 @@ SMODS.Atlas {
 	py = 34
 }
 
+function Card.add_to_deck(self, from_debuff)
+    if not from_debuff then
+		local cen = self.gc and self:gc()
+		if cen then
+			if cen.unique then
+				for k, v in ipairs(G.jokers.cards) do
+					if v ~= self and v:gc().key == cen.key then
+						ease_dollars(self.sell_cost or 0)
+						self:destroy()
+						return --blocked
+					end
+				end
+			end
+		end
+	end
+end
 
 --- RARITIES
 SMODS.Rarity {
@@ -20,6 +36,7 @@ SMODS.Rarity {
 }
 
 
+
 ---JOKER ATLASES
 
 --SMODS.Atlas {
@@ -28,6 +45,12 @@ SMODS.Rarity {
 --	py = 95,
 --	path = 'j_furswap_demo.png'
 --}
+SMODS.Atlas {
+	key = 'furswapnightmare',
+	px = 71,
+	py = 95,
+	path = 'j_furswap_nightmare.png'
+}
 
 SMODS.Atlas {
 	key = 'furswaplumi',
@@ -181,7 +204,7 @@ SMODS.Joker {
 				'{C:attention}Lucky{} cards give',
 				'{X:almanac,C:edition,s:2.5}#1#(P+1){} Chips & Mult',
 				'when scored',
-				'{C:inactive}(P = order/position of card in played hand, max. 10)',
+				'{C:inactive}(P = order/position of card in played hand, max. 50)',
 				"{C:cry_ascendant,s:1.5,E:1}#2#{C:inactive,E:1}#3#",
 				'{C:dark_edition,s:0.7,E:2}Face art by : FurSwap!Chara'
 			}
@@ -245,7 +268,7 @@ SMODS.Joker {
 								card = card
 							}, true
 						else
-							ORDER = math.min(ORDER, 11)
+							ORDER = math.min(ORDER, 51)
 							return {
 								hyper_chips = {ORDER - 1, ORDER + 1},
 								hyper_mult = {ORDER - 1, ORDER + 1},
@@ -258,8 +281,9 @@ SMODS.Joker {
 			end
 		end
 	}
-
-
+	function furswap.nightmare()
+		return #SMODS.find_card('j_furswap_nightmare') > 0
+	end
 --- THIS ONE IS CODED, just has no sprite yet.
 ---SMODS.Joker {
 ---	key = 'furswapdemo',
@@ -301,6 +325,41 @@ SMODS.Joker {
 	--	end
 --	end
 --}
+SMODS.Joker {
+	key = 'furswapnightmare',
+	loc_txt = {
+		name = 'Nightmare Stone',
+		text = {
+			'{C:dark_edition,s:2.5,E:1}???',
+			'{C:dark_edition}Face art by:FurSwap!Chara'
+		}
+	},
+	pos = { x = 0, y = 0 },
+	soul_pos = { x = 1, y = 0 },
+	cost = 15,
+	rarity = 3,
+	unlocked = true,
+	discovered = true,
+	debuff_immune = true,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = false,
+	atlas = 'furswapnightmare',
+	add_to_deck = function(self, card, from_debuff)
+		if not from_debuff then
+			ease_ante(1)
+		end
+	end,
+	remove_from_deck = function(self, card, from_debuff)
+		if not from_debuff then
+			ease_ante(-1)
+		end
+	end
+}
+---Fusion jokers addon code
+if FusionJokers then
+	FusionJokers.fusions:add_fusion('j_furswap_furswapchara', nil, nil, 'j_furswap_nightmarestone', nil, nil, 'j_furswap_nightmarechara', 1000)
+end
 ----------------
 ---CODING END---
 ----------------
