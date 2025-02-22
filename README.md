@@ -15,6 +15,9 @@ This mod depends on:
 - [Cryptid](https://github.com/MathIsFun0/Cryptid) (>=0.5.3d)
 - [Fusion Jokers](https://github.com/itayfeder/Fusion-Jokers) (>=1.0.2)
 
+### Additional Content
+This mod requires Jen's Almanac for specific dialouge and other things. Download it in the Cryptid Discord [here!](https://discord.gg/unbalanced)
+
 ### How to Install
 
 - Navigate to your Mods directory. (It should look like C:\Users\{USERNAME}\AppData\Roaming\Balatro\Mods)
