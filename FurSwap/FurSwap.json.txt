@@ -1,0 +1,17 @@
+{
+    "id": "furswap",
+    "name": "FurSwap's Toy Box!",
+    "author": ["FurSwap!Chara","QuietSuburbs","TheChaoticShapeshift"],
+    "description": "A collection of my friends and OCs as Jokers and such, along with several other ideas I have in my head! Also a Cryptid extension. effect ideas by my friends! Some code taken from Jen's Almanac, Cryptid, and more. Coding and Backgrounds for jokers, alongside other art by me. Most joker faces by QuietSuburbs. Additional art by TheChaoticShapeshift.",
+    "prefix": "furswap",
+    "main_file": "furswap.lua",
+    "badge_colour": "ff7f27",
+    "dependencies": [
+        "Steamodded (>=1.0.0~ALPHA-1304a)",
+		"nopeus (>=2.2.3)",
+		"aurinko (>=0.4.11)",
+		"Talisman (>=2.0.2)",
+		"incantation (>=0.5.10)"
+    ],
+    "version": "0.1.Open.Testing"
+}
