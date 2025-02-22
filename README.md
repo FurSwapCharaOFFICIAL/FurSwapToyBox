@@ -9,6 +9,14 @@ A mod for Balatro that breaks the balance in the dumbest ways possible.
 
 ## Installation
 
+### Dependencies
+This mod depends on:
+- [Steamoddeď](https://github.com/Steamodded/smods) (>=1.0.0~ALPHA-1304a)
+- nopeus (>=2.2.3)
+- aurinko (>=0.4.11)
+- Talisman (>=2.0.2)
+- incantation (>=0.5.10)
+
 ### How to Install
 
 - Navigate to your Mods directory. (It should look like C:\Users\{USERNAME}\AppData\Roaming\Balatro\Mods)
