@@ -13,7 +13,6 @@ A mod for Balatro that breaks the balance in the dumbest ways possible.
 This mod depends on:
 - [Steamoddeď](https://github.com/Steamodded/smods) (>=1.0.0~ALPHA-1304a)
 - [Cryptid](https://github.com/MathIsFun0/Cryptid) (>=0.5.3d)
-- [Fusion Jokers](https://github.com/itayfeder/Fusion-Jokers) (>=1.0.2)
 
 ### Additional Content
 This mod requires Jen's Almanac for specific dialouge and other things. Download it in the Cryptid Discord [here!](https://discord.gg/unbalanced)
