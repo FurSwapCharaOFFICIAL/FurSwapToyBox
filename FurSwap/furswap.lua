@@ -1,6 +1,43 @@
 ----------------
 --CODING BEGIN--
 ----------------
+---
+---
+---
+furswap = {
+	locale_colours = {
+		lorecolor = '9E2A9F',
+		captioncolor = '009A9A'
+	},
+}
+
+
+
+---Text functions
+local function faceartby(artist)
+	return '{C:dark_edition,s:0.7,E:2}Floating sprite by : ' .. artist
+end
+
+local function originworld(world)
+	return '{C:cry_exotic,s:0.7,E:2}Origin : ' .. world
+end
+
+local function altuni(world)
+	return '{C:cry_blossom,s:0.7,E:2}A.U. : ' .. world
+end
+
+local function captions(cap)
+	return '{C:captioncolor,E:1}' .. cap
+end
+
+local function lore(txt)
+	return '{C:lorecolor,s:0.7,E:2}' .. txt
+end
+
+local function characterby(txt)
+	return '{C:lorecolor,s:0.7,E:2}Character by: ' .. txt
+end
+
 --- Startup stuff
 
 if not fur then
@@ -39,10 +76,6 @@ SMODS.Rarity {
 	},
 	badge_colour = G.C.BLACK
 }
-
-function fur.night()
-	return #SMODS.find_card('j_furswap_nightmare') > 0
-end
 
 ---JOKER ATLASES
 
@@ -100,10 +133,10 @@ SMODS.Joker {
         name = 'Luminescent',
         text = {'{C:money}Retrigger{} all jokers to the left of this one {C:money}#2# time(s){}.',
 			'All jokers to the right of this one give {X:mult,C:white}X#1#{} Mult',
-			'{C:inactive,E:1}#3#{}',
-			'{C:inactive,s:0.7,E:2}Face art by : QuietSuburbs',
-			'{C:inactive,s:0.7,E:2}Character by : Luminescent123',
-			'{C:important,s:0.7,E:2}Origin : Rain World'
+			captions('#3#'),
+			faceartby('Quietsuburbs'),
+			originworld('Rain World'),
+			characterby('Luminescent123')
 			},
     },	
 	atlas = 'furswaplumi',
@@ -167,11 +200,14 @@ SMODS.Joker {
 			'{X:purple,C:white}^#1#{} Chips & Mult',
 			'when scored',
 			' ',
-			"{C:inactive,E:1}#2#{C:red,E:1}#3#{C:inactive,E:1}#4#",
-			'{C:dark_edition,s:0.7,E:2}Face art by : FurSwap!Chara',
+			captions('#2#'),
+			captions('#3#'),
+			faceartby('FurSwap!Chara'),
+			originworld('FurSwap (Undertale X Changed AU)'),
+			characterby('FurSwap!Chara')
 		}
 	},
-	config = {lucky = 1.3},
+	config = {lucky = 2},
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 1, y = 0 },
 	sinis = { x = 2, y = 0 },
@@ -185,7 +221,7 @@ SMODS.Joker {
 	perishable_compat = false,
 	atlas = 'furswapchara',
     loc_vars = function(self, info_queue, center)
-        return {vars = {center.ability.lucky, Jen.sinister and 'PLEASE STOP IT! ' or fur.night and 'Hnfff... I feel like it\'s time' or 'Hope you\'re lucky, cuz I\'m sure not', Jen.sinister and 'MY BRAIN HURTS!' or '', Jen.sinister and '' or ''}}
+        return {vars = {center.ability.lucky, Jen.sinister and 'PLEASE STOP IT! ' or fur.night and 'Hnfff... I feel like it\'s time' or 'Hope you\'re lucky, cuz I\'m sure not', Jen.sinister and 'MY BRAIN HURTS!' or ''}}
     end,
     calculate = function(self, card, context)
 		if context.individual then
@@ -212,8 +248,12 @@ SMODS.Joker {
 				'{X:almanac,C:edition,s:2.5}#1#(P+1){} Chips & Mult',
 				'when scored',
 				'{C:inactive}(P = order/position of card in played hand, max. 50)',
-				"{C:cry_ascendant,s:1.5,E:1}#2#{C:inactive,E:1}#3#",
-				'{C:dark_edition,s:0.7,E:2}Face art by : FurSwap!Chara'
+				'{C:cry_ascendant,s:1.5,E:1}#2#',
+				'',
+				faceartby('FurSwap!Chara'),
+				originworld('FurSwap (Underswap X Changed)'),
+				altuni('Indie Cross'),
+				characterby('FurSwap!Chara')
 			}
 		},
 		config = {},
@@ -233,7 +273,7 @@ SMODS.Joker {
 		debuff_immune = true,
 		atlas = 'furswapnightmarechara',
 		loc_vars = function(self, info_queue, center)
-			return {vars = {'{P-1}', Jen.dramatic and '' or 'I\'m finally STRONG again!', Jen.dramatic and 'Uehehehehe! MORE CHAOS! MOOOOOORE!' or ''}}
+			return {vars = {'{P-1}', Jen.dramatic and 'Uehehehehe! MORE CHAOS! MOOOOOORE!' or 'I\'m finally STRONG again!'}}
 		end,
 		calculate = function(self, card, context)
 			if context.individual then
@@ -302,9 +342,9 @@ SMODS.Joker {
 ---			'{C:clubs}Clubs{} reduce blind size by',
 ---			'{C:money}5%{} when scored',
 ---			' ',
----			'{C:inactive,s:1.25,E:1}#2#',
----			'{C:dark_edition,s:0.7,E:2}Face art by : QuietSuburbs',
----			'{C:inactive,s:0.7,E:2}Character by : demoknight_tf2'
+--			captions('#2#'),
+-- 			faceartby('QuietSuburbs'),
+-- 			characterby('demoknight_tf2')
 ---		}
 ---	},
 ---	pos = { x = 0, y = 0 },
@@ -339,8 +379,9 @@ SMODS.Joker {
 	loc_txt = {
 		name = 'Nightmare Stone',
 		text = {
-			'{C:dark_edition,s:2.5,E:1}???',
-			'{C:dark_edition}Face art by:FurSwap!Chara'
+			'{C:inactive,E:1}The hell\'s this?',
+			'',
+			faceartby('FurSwap!Chara')
 		}
 	},
 	pos = { x = 0, y = 0 },
@@ -365,10 +406,6 @@ SMODS.Joker {
 		end
 	end
 }
----Fusion jokers addon code
-if FusionJokers then
-	FusionJokers.fusions:add_fusion('j_furswap_furswapchara', nil, nil, 'j_furswap_nightmarestone', nil, nil, 'j_furswap_nightmarechara', 1000)
-end
 ----------------
 ---CODING END---
 ----------------
@@ -378,3 +415,4 @@ end
 ---Lilly wants to kill 2 to 3 jokers, then herself, but let you win the blind instantly.
 --- I want to make a blind that debuffs all duplicate jokers
 --- I need a sprite for a joker only useful for fusions.
+--- I need to find a way to integrate a fusion system
